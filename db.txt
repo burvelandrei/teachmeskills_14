@@ -1,0 +1,46 @@
+-- Сооздайм таблицу
+create table employees(
+id INT primary key,
+Name VARCHAR(50),
+Position VARCHAR(50),
+Departament VARCHAR(50),
+Salary DECIMAL(10,2))
+
+-- Зполняем данными
+insert into employees(id, Name, Position, Departament , Salary)
+values (1, 'Андрей', 'Программист', 'Разработчики', 1300.20),
+(2, 'Валерий', 'Инженер', 'Конструктора', 1000.50),
+(3, 'Ольга', 'Бухгалтер', 'Бухгалтерия', 1200.20),
+(4, 'Алексей', 'Юрист', 'Юристы', 1500.50),
+(5, 'Пётр', 'Директор', 'Руководители', 2000.35);
+
+-- Изменяем должность
+update employees
+set Position  = 'Главный бухгалтер'
+where Name = 'Ольга' and id = 3;
+
+-- Добавляем новый столбец с датой
+alter table employees
+add column HireDate DATE default null;
+
+-- Заполняем данными
+update employees
+set HireDate = '2022-01-04'
+where Name = 'Андрей' and id = 1;
+
+update employees
+set HireDate = '2021-12-04'
+where Name = 'Валерий' and id = 2;
+
+update employees
+set HireDate = '2020-10-14'
+where Name = 'Ольга' and id = 3;
+
+update employees
+set HireDate = '2024-06-05'
+where Name = 'Алексей' and id = 4;
+
+update employees
+set HireDate = '2017-07-17'
+where Name = 'Пётр' and id = 5;
+
