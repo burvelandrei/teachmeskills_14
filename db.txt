@@ -44,3 +44,35 @@ update employees
 set HireDate = '2017-07-17'
 where Name = 'Пётр' and id = 5;
 
+--Находим всех сотрудников у кого должность Инженер
+select id, Name, Position, Departament, Salary , HireDate
+from employees
+where Position = "Инженер";
+
+--Находим всех сотрудников у кого зарплаты выше 1400
+select id, Name, Position, Departament, Salary , HireDate
+from employees
+where Salary > 1400;
+
+--Находим всех сотрудников кто работает в отделе Конструктора
+select id, Name, Position, Departament, Salary , HireDate
+from employees
+where Departament = "Конструктора";
+
+--Находим среднюю зарплату по всем сотрудникам
+select avg(Salary)
+from employees
+
+--Удаляем таблицу
+drop table employees;
+
+--Функция для определения средней зарплаты
+create function get_avg_salary()
+returns numeric;
+declare avg_salary numeric;
+begin
+	select AVG(Salary) into avg_salary from employees;
+	return avg_salary;
+end;
+
+select get_avg_salary();
